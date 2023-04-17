@@ -1,0 +1,92 @@
+@mixin flex($align, $justify) {
+    display: flex;
+    align-items: #{$align};
+    justify-content: #{$justify};
+}
+
+@mixin font-size($min, $max) {
+    $size-diff: $max - $min;
+    $size-diff-mobile: $size-diff * 1.7;
+
+    font-size: calc(#{$min + px} + #{$size-diff-mobile} * ((100vw - 320px) / 1024));
+
+    @media screen and (min-width: 767px) {
+        font-size: calc(#{$min + px} + #{$size-diff} * (100vw / 1024));
+    }
+
+    @media screen and (min-width: 1024px) {
+        font-size: #{$max + px};
+    }
+}
+
+@mixin field-size($size) {
+    width: $size + 10;
+    height: $size + 60;
+}
+
+@mixin cell-sizes($font-size, $field-size) {
+    $columns: 3;
+    $sizes: 'easy', 'classic', 'medium', 'hard', 'expert', 'extreme';
+
+    @each $size in $sizes {
+        $square-side: floor($field-size / $columns);
+        $before-side: $square-side * 0.85;
+        $before-position: ($square-side - $before-side - 4) / 2;
+
+        &.#{$size} {
+            .game-cell {
+                width: $square-side;
+                height: $square-side;
+                font-size: $font-size;
+
+                &::before {
+                    top: $before-position;
+                    left: $before-position;
+                    width: $before-side;
+                    height: $before-side;
+                }
+            }
+        }
+
+        $columns: $columns + 1;
+
+        @if $size !='expert' {
+            $font-size: $font-size / 1.3;
+        }
+    }
+}
+
+$bg-color: #c4a5d9;
+$btn-color: #b5beee;
+$field-size: 300px;
+
+%btn {
+    width: auto;
+    height: auto;
+    font-weight: bold;
+    padding: 7px 15px;
+    outline: none;
+    cursor: pointer;
+    color: #333438;
+    background-color: $btn-color;
+
+    border: none {
+        radius: 10px;
+    }
+
+    &:hover {
+        background-color: darken($btn-color, 5%);
+    }
+
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+%before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

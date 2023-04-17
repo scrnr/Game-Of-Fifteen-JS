@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel='stylesheet' href='css/game.min.css'>
+	<title>Game of Fifteen</title>
+</head>
+
+<body>
+
+	<div class='screen-box' id='screen-box'>
+
+		<div class='screen screen__one' id='screen-one'>
+			<div class='container'>
+				<h1 class='screen__title'>Game of Fifteen</h1>
+				<button type='button' class='btn btn__start' id='btn-start'>Start game</button>
+			</div>
+		</div>
+
+		<div class='screen screen__two' id='screen-two'>
+			<div class='container'>
+				<h1 class='screen__title'>Choose the level</h1>
+				<div class='levels-box' id='level-box'>
+					<button type='button' class='btn levels-box__item'>Easy</button>
+					<button type='button' class='btn levels-box__item'>Classic</button>
+					<button type='button' class='btn levels-box__item'>Medium</button>
+					<button type='button' class='btn levels-box__item'>Hard</button>
+					<button type='button' class='btn levels-box__item'>Expert</button>
+					<button type='button' class='btn levels-box__item'>Extreme</button>
+				</div>
+			</div>
+		</div>
+
+		<div class='screen screen__game' id='screen-game'>
+			<div class='container'>
+				<div class='game__zone'>
+					<div class='game__field' id='game'></div>
+					<div class='game__win' id='win'>
+						<h3 class='game__win-title'>You win!</h3>
+					</div>
+					<button type='button' class='btn btn__new-game' id='new-game-btn'>New game</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src='js/classes/Game.js'></script>
+	<script src='js/main.js'></script>
+</body>
+
+</html>
